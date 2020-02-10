@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DuckHawk - Delivery</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Profile</string>
+    <string name="menu_slideshow">Orders</string>
+    <string name="menu_tools">Payments</string>
+    <string name="menu_share">Logout</string>
+    <string name="menu_send">Disable</string>
+    <string name="logout">Logout</string>
+    <string name="disable_acc">Disable Acc</string>
+</resources>
