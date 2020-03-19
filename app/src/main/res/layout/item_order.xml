@@ -24,8 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
+
             android:text="address"
             android:id="@+id/order_address"/>
+
+<!--             android:text="location"
+            android:id="@+id/order_location"/> -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +49,8 @@
             android:textSize="22sp"
             android:text="location"
             android:id="@+id/order_location"/>
+            android:text="location"
+            android:id="@+id/order_prodcat"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -58,6 +65,10 @@
                 android:layout_height="wrap_content"
                 android:text="Deny"
                 android:id="@+id/deny"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deny"/>
         </LinearLayout>
     </LinearLayout>
 

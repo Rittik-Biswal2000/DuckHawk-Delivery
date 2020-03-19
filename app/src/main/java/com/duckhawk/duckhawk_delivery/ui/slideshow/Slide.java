@@ -6,10 +6,12 @@ public class Slide {
     private String Address;
     private String prodcat;
     private String productid;
+
     private String location;
 
+
     public Slide() {}
-    public Slide(String Buyer, String address, String prodcat,String productid,String Location) {
+    public Slide(String Buyer, String address, String prodcat,String productid) {
         this.buyer = Buyer;
         this.Address = address;
         this.prodcat = prodcat;
