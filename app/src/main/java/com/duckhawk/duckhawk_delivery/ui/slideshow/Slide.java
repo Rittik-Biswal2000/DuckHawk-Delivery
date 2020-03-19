@@ -7,12 +7,24 @@ public class Slide {
     private String prodcat;
     private String productid;
 
+    private String location;
+
+
     public Slide() {}
     public Slide(String Buyer, String address, String prodcat,String productid) {
         this.buyer = Buyer;
         this.Address = address;
         this.prodcat = prodcat;
         this.productid = productid;
+        this.location = Location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getbuyer() {

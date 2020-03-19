@@ -24,18 +24,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
-            android:text="location"
-            android:id="@+id/order_location"/>
+
+            android:text="address"
+            android:id="@+id/order_address"/>
+
+<!--             android:text="location"
+            android:id="@+id/order_location"/> -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
-            android:text="location"
+            android:text="prodid"
             android:id="@+id/order_prodid"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
+            android:text="prodcat"
+            android:id="@+id/order_prodcat"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="location"
+            android:id="@+id/order_location"/>
             android:text="location"
             android:id="@+id/order_prodcat"/>
         <LinearLayout
@@ -44,7 +57,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="accept"/>
+                android:text="accept"
+                android:id="@+id/accept"
+                android:onClick="accept"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deny"
+                android:id="@+id/deny"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
