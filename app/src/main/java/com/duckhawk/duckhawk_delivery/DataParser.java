@@ -1,6 +1,8 @@
 package com.duckhawk.duckhawk_delivery;
 
 
+import android.widget.TextView;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
@@ -18,10 +20,13 @@ import java.util.List;
 public class DataParser {
     public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
 
+
         List<List<HashMap<String, String>>> routes = new ArrayList<>();
         JSONArray jRoutes;
         JSONArray jLegs;
         JSONArray jSteps;
+        JSONArray jDistance;
+
         try {
             jRoutes = jObject.getJSONArray("routes");
             /** Traversing all routes */
@@ -31,6 +36,11 @@ public class DataParser {
                 /** Traversing all legs */
                 for (int j = 0; j < jLegs.length(); j++) {
                     jSteps = ((JSONObject) jLegs.get(j)).getJSONArray("steps");
+                    JSONObject legsObjects = jLegs.getJSONObject(0);
+                    JSONObject distance = legsObjects.getJSONObject("distance");
+                    String Distance = distance.getString("text");
+
+
 
                     /** Traversing all steps */
                     for (int k = 0; k < jSteps.length(); k++) {
@@ -43,10 +53,12 @@ public class DataParser {
                             HashMap<String, String> hm = new HashMap<>();
                             hm.put("lat", Double.toString((list.get(l)).latitude));
                             hm.put("lng", Double.toString((list.get(l)).longitude));
+                            hm.put("distance",Distance);
                             path.add(hm);
                         }
                     }
                     routes.add(path);
+
                 }
             }
 

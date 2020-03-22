@@ -88,7 +88,7 @@ public class SlideshowFragment extends Fragment {
                 slideHolder.setProdcat("Prod Category: " + slide.getProdcat());
                 slideHolder.setProdid("Prod id: "+slide.getProductid());
                 slideHolder.setlocation("Location: " +slide.getLocation());
-                slideHolder.setaccept(slide.getLocation());
+                slideHolder.setaccept(slide.getLocation(),slide.getProdcat(),slide.getProductid(),slide.getAddress(),slide.getbuyer(),slide.getPhone(),slide.getPrice());
 
             }
         };
@@ -128,17 +128,17 @@ public class SlideshowFragment extends Fragment {
         }
 
 
-        public void setProdid(String prodcat)
+        public void setProdid(String prodid)
         {
             TextView tv_prodid = (TextView) itemView.findViewById(R.id.order_prodid);
-            tv_prodid.setText(prodcat);
+            tv_prodid.setText(prodid);
         }
         public void setlocation(String location)
         {
             TextView tv_prodid = (TextView) itemView.findViewById(R.id.order_location);
             tv_prodid.setText(location);
         }
-        public void setaccept(final String location)
+        public void setaccept(final String location, final String prodcat, final String prodid, final String address, final String buyer, final String phone, final String price)
         {
             Button btnaccept = (Button)itemView.findViewById(R.id.accept);
             btnaccept.setOnClickListener(new View.OnClickListener() {
@@ -147,9 +147,13 @@ public class SlideshowFragment extends Fragment {
                     Intent i = new Intent(mView.getContext(),Map.class);
                     System.out.println(location);
                     i.putExtra("Location",location);
+                    i.putExtra("Buyer",buyer);
+                    i.putExtra("Prodid",prodid);
+                    i.putExtra("Prodcat",prodcat);
+                    i.putExtra("Address",address);
+                    i.putExtra("Phone",phone);
+                    i.putExtra("Price",price);
                     mView.getContext().startActivity(i);
-
-
                 }
             });
         }

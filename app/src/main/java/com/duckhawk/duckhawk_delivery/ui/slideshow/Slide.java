@@ -7,14 +7,34 @@ public class Slide {
     private String prodcat;
     private String productid;
     private String location;
+    private String price;
+    private String phone;
 
     public Slide() {}
-    public Slide(String Buyer, String address, String prodcat,String productid,String Location) {
+    public Slide(String Buyer, String address, String prodcat,String productid,String Location, String Phone,String Price) {
         this.buyer = Buyer;
         this.Address = address;
         this.prodcat = prodcat;
         this.productid = productid;
         this.location = Location;
+        this.price = Price;
+        this.phone= Phone;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public String getLocation() {
