@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,6 +17,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -52,8 +55,9 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, TaskLoa
     private LocationManager locationManager;
     private boolean isPermision;
     LatLng cLatLng;
-    Button call, cancl;
+    Button call, cancl,notofication;
     int c= 1;
+    private static final int MY_PERMISSION_REQUEST_SEND_SMS=0;
 
     String[] arrOfStr;
     Location curlocation;
@@ -87,6 +91,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, TaskLoa
         Price = (TextView)findViewById(R.id.price);
         call = (Button) findViewById(R.id.call);
         cancl = (Button) findViewById(R.id.delivery);
+        notofication = (Button) findViewById(R.id.notification);
         Distance = (TextView)findViewById(R.id.distance);
         call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +110,21 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, TaskLoa
                             {Manifest.permission.CALL_PHONE},REQUEST_CODE);
                 }
                 getApplicationContext().startActivity(intent);
+            }
+        });
+        notofication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int permision = ContextCompat.checkSelfPermission(Map.this,Manifest.permission.SEND_SMS);
+
+                if(permision == PackageManager.PERMISSION_GRANTED)
+                {
+                    sendsms();
+                }
+                else
+                {
+                    ActivityCompat.requestPermissions(Map.this,new String[]{Manifest.permission.SEND_SMS},MY_PERMISSION_REQUEST_SEND_SMS);
+                }
             }
         });
 
@@ -166,6 +186,19 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, TaskLoa
                     fetchLastLocation();
                 }
                 break;
+            case MY_PERMISSION_REQUEST_SEND_SMS:
+            {
+                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                {
+                    Toast.makeText(Map.this,"Thanks for permitting",Toast.LENGTH_SHORT).show();
+                    sendsms();
+                }
+                else
+                {
+                    Toast.makeText(Map.this,"Why didnt u permitted",Toast.LENGTH_SHORT).show();
+                }
+            }
+            break;
 
         }
     }
@@ -291,5 +324,12 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, TaskLoa
         {
             mGoogleApiClient.disconnect();
         }
+    }
+    public void sendsms()
+    {
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("8987516567",null,"hello",null,null);
+        Toast.makeText(Map.this,"sent",Toast.LENGTH_SHORT).show();
+
     }
 }
