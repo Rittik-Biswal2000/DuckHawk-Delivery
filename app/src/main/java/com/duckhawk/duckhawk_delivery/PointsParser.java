@@ -1,6 +1,5 @@
 package com.duckhawk.duckhawk_delivery;
 
-
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
+/*
  * Created by Vishal on 10/20/2018.
  */
 
